@@ -25,7 +25,7 @@ def selection_sort(arr: list[int]) -> list[int]:
         arr[i], arr[min_idx] = arr[min_idx], arr[i]
     return arr
 
-def insertion_sort(arr):
+def insertion_sort(arr: list[int]) -> list[int]:
     """삽입 정렬 (Insertion Sort)"""
     for i in range(1, len(arr)):
         key = arr[i]
@@ -36,7 +36,7 @@ def insertion_sort(arr):
         arr[j + 1] = key
     return arr
 
-def merge_sort(arr):
+def merge_sort(arr: list[int]) -> list[int]:
     """병합 정렬 (Merge Sort)"""
     if len(arr) > 1:
         mid = len(arr) // 2
