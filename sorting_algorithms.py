@@ -1,9 +1,7 @@
-# pyre-ignore-all-errors
 import random
 import time
-from typing import List, Optional
 
-def bubble_sort(arr: List[int]) -> List[int]:
+def bubble_sort(arr: list[int]) -> list[int]:
     """버블 정렬 (Bubble Sort)"""
     n = len(arr)
     for i in range(n):
@@ -16,7 +14,7 @@ def bubble_sort(arr: List[int]) -> List[int]:
             break
     return arr
 
-def selection_sort(arr: List[int]) -> List[int]:
+def selection_sort(arr: list[int]) -> list[int]:
     """선택 정렬 (Selection Sort)"""
     n = len(arr)
     for i in range(n):
@@ -27,7 +25,7 @@ def selection_sort(arr: List[int]) -> List[int]:
         arr[i], arr[min_idx] = arr[min_idx], arr[i]
     return arr
 
-def insertion_sort(arr: List[int]) -> List[int]:
+def insertion_sort(arr):
     """삽입 정렬 (Insertion Sort)"""
     for i in range(1, len(arr)):
         key = arr[i]
@@ -38,7 +36,7 @@ def insertion_sort(arr: List[int]) -> List[int]:
         arr[j + 1] = key
     return arr
 
-def merge_sort(arr: List[int]) -> List[int]:
+def merge_sort(arr):
     """병합 정렬 (Merge Sort)"""
     if len(arr) > 1:
         mid = len(arr) // 2
@@ -48,9 +46,7 @@ def merge_sort(arr: List[int]) -> List[int]:
         merge_sort(L)
         merge_sort(R)
 
-        i = 0
-        j = 0
-        k = 0
+        i = j = k = 0
         while i < len(L) and j < len(R):
             if L[i] < R[j]:
                 arr[k] = L[i]
@@ -71,7 +67,7 @@ def merge_sort(arr: List[int]) -> List[int]:
             k += 1
     return arr
 
-def quick_sort(arr: List[int], low: int = 0, high: Optional[int] = None) -> List[int]:
+def quick_sort(arr, low=0, high=None):
     """퀵 정렬 (Quick Sort)"""
     if high is None:
         high = len(arr) - 1
@@ -92,14 +88,14 @@ def quick_sort(arr: List[int], low: int = 0, high: Optional[int] = None) -> List
 
 MIN_MERGE = 32
 
-def calc_min_run(n: int) -> int:
+def calc_min_run(n):
     r = 0
     while n >= MIN_MERGE:
         r |= n & 1
         n >>= 1
     return n + r
 
-def insertion_sort_for_timsort(arr: List[int], left: int, right: int) -> None:
+def insertion_sort_for_timsort(arr, left, right):
     for i in range(left + 1, right + 1):
         key = arr[i]
         j = i - 1
@@ -108,13 +104,12 @@ def insertion_sort_for_timsort(arr: List[int], left: int, right: int) -> None:
             j -= 1
         arr[j + 1] = key
 
-def merge_for_timsort(arr: List[int], l: int, m: int, r: int) -> None:
+def merge_for_timsort(arr, l, m, r):
     len1, len2 = m - l + 1, r - m
     left = arr[l : m + 1]
     right = arr[m + 1 : r + 1]
     
-    i = 0
-    j = 0
+    i = j = 0
     k = l
     
     while i < len1 and j < len2:
@@ -136,7 +131,7 @@ def merge_for_timsort(arr: List[int], l: int, m: int, r: int) -> None:
         k += 1
         j += 1
 
-def timsort(arr: List[int]) -> List[int]:
+def timsort(arr):
     """팀소트 파이썬 구현 (Timsort Python)"""
     n = len(arr)
     min_run = calc_min_run(n)
