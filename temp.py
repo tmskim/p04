@@ -1,4 +1,5 @@
 # pyre-ignore-all-errors
+# type: ignore
 import random
 import time
 from typing import List, Optional
